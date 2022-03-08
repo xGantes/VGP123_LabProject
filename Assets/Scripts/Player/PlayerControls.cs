@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(Animator))]
 
 public class PlayerControls : MonoBehaviour
@@ -23,32 +24,6 @@ public class PlayerControls : MonoBehaviour
     public bool isGrounded;
     private bool isCoRoutineRunning = false;
 
-    int _score = 0;
-    int _lives = 1;
-    public int maxlives = 3;
-    public int score
-    {
-        get{  return _score; }
-        set
-        {
-            _score = value;
-            Debug.Log("Score set to:" + score.ToString());
-        }
-    }
-    public int lives
-    {
-        get{  return _lives; }
-        set
-        { 
-            _lives = value;
-            if(_lives > maxlives)
-            {
-                _lives = maxlives;
-            }
-            Debug.Log("Lives set to:" + lives.ToString());
-        }
-
-    }
     // Start is called before the first frame update
     void Start()
     {

@@ -28,19 +28,21 @@ public class CollectablePickups : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            PlayerControls playerCon = collision.gameObject.GetComponent<PlayerControls>();
             switch(collectables)
             {
                 case CollectibleType.POWERUP:
-                    playerCon.PowerJumpForce();
-                    playerCon.score += gamescore;
+                    collision.gameObject.GetComponent<PlayerControls>().PowerJumpForce();
+                    //playerCon.score += gamescore;
+                    GameManager.instances.score += gamescore;
                     break;
                 case CollectibleType.LIFE:
-                    playerCon.lives++;
-                    playerCon.score += gamescore;
+                    //playerCon.lives++;
+                    //playerCon.score += gamescore;
+                    GameManager.instances.lives++;
                     break;
                 case CollectibleType.SCORE:
-                    playerCon.score += gamescore;
+                    //playerCon.score += gamescore;
+                    GameManager.instances.score += gamescore;
                     break;
             }
             Destroy(gameObject);
