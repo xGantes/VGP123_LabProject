@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -9,7 +10,8 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public GameObject playerInstances;
     [HideInInspector] public Level currentLevel;
-
+    [HideInInspector] public UnityEvent<int> onLifeEvent;
+    [HideInInspector] public UnityEvent<int> onScoreEvent;
     public static GameManager instances
     {
         get 
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
         set
         {
             _score = value;
+            onScoreEvent.Invoke(value);
             Debug.Log("Score set to:" + score.ToString());
         }
     }
@@ -51,11 +54,13 @@ public class GameManager : MonoBehaviour
             if (_lives > maxlives)
             {
                 _lives = maxlives;
+                onLifeEvent.Invoke(value);
             }
             Debug.Log("Lives set to:" + lives.ToString());
         }
 
     }
+
 
     // Start is called before the first frame update
     void Start()
@@ -74,17 +79,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if(SceneManager.GetActiveScene().name == "TestScene")
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    if(SceneManager.GetActiveScene().name == "MainMenuScene")
             
-                SceneManager.LoadScene("SampleScene");
+        //        SceneManager.LoadScene("SampleScene");
             
-            else
+        //    else
             
-                SceneManager.LoadScene("TestScene");
+        //        SceneManager.LoadScene("MainMenuScene");
             
-        }
+        //}
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             #if UNITY_EDITOR

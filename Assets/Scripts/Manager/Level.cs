@@ -10,6 +10,7 @@ public class Level : MonoBehaviour
     void Start()
     {
         GameManager.instances.lives = startingLives;
+        GameManager.instances.score = 0;
         GameManager.instances.spawnPlayer(spawnPoint);
         GameManager.instances.currentLevel = this;
     }

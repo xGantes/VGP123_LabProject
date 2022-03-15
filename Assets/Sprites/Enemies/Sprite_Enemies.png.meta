@@ -187,7 +187,7 @@ TextureImporter:
     second: Sprite_Enemies_60
   - first:
       213: -8702983505336315541
-    second: Sprite_Enemies_61
+    second: enemyCast
   - first:
       213: -2008440447323019963
     second: Sprite_Enemies_62
@@ -3445,7 +3445,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_61
+      name: enemyCast
       rect:
         serializedVersion: 2
         x: 283
